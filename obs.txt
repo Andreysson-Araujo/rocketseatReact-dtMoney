@@ -1,0 +1,6 @@
+#RODAS OS COMANDOS 
+npm create react-app dtmoney --template typescript
+fazer downgrade do node e do npm dependo da versão.
+instalar a biblioteca styled-componentes e susas tipagens
+instalar  miragejs
+instalar axios
