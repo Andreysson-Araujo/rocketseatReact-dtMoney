@@ -3,11 +3,11 @@ import logoImg from "../../assets/logo.svg"
 import Modal from "react-modal"
 import { Container, Content } from "./styles"
 
-interface HeaderProps{
+interface HeaderProps {
     onOpenNewTransactionModal: () => void;
 }
 
-export function Header({onOpenNewTransactionModal}: HeaderProps) {
+export function Header({ onOpenNewTransactionModal }: HeaderProps) {
 
     return (
         <Container>
