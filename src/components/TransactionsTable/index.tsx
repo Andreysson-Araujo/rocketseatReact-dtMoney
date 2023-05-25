@@ -1,11 +1,26 @@
 import { api } from "../../services/api";
 import { Container } from "./styles"
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+interface Transaction {
+    id: number;
+    title: string;
+    amount: number;
+    type: string;
+    category: string;
+    createdAt: string;
+}
+
+
+
 
 export function TransactionsTable() {
+    const [transactions, setTransactions] = useState<Transaction[]>([])
+
+
     useEffect(() => {
-        api.get("transactions")
-            .then(response => console.log(response.data))
+        api.get("/transactions")
+            .then(response => setTransactions(response.data.transactions))
     }, []);
 
 
@@ -22,21 +37,26 @@ export function TransactionsTable() {
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Desenvolvimento de website</td>
-                        <td className="deposit">R$12.000</td>
-                        <td>Desenvolvimento</td>
-                        <td>12/04/2023</td>
+                   {transactions.map(transaction => (
+                    <tr key={transaction.id}>
+                        <td>{transaction.title}</td>
+                        <td className={transaction.type}>
+                            {new Intl.NumberFormat("pt-BR", {
+                                style: "currency",
+                                currency: "BRL"
+                            }).format(transaction.amount)}
+                        </td>
+                        <td>{transaction.category}</td>
+                        <td>
+                            {new Intl.DateTimeFormat("pt-BR").format(
+                               new Date(transaction.createdAt)
+                            )}
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Aluguel</td>
-                        <td className="withdraw">-R$500,00</td>
-                        <td>Desenvolvimento</td>
-                        <td>22/05/2023</td>
-                    </tr>
+                    
+                   ))}
                 </tbody>
             </table>
-
         </Container>
     );
 }

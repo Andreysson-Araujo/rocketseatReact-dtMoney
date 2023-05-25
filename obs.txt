@@ -5,3 +5,4 @@ instalar a biblioteca styled-componentes e susas tipagens
 instalar  miragejs
 instalar axios
 adicionar biblioteca react-modal e suas tipagens
+intalar biblioteca polished 
