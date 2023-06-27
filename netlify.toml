@@ -1,6 +1,7 @@
 [build]
 command = "npm run build"
 publish = "build"
+environment = { NODE_VERSION = "16.6.0" }
 
 [[redirects]]
 from = "/api/*"
